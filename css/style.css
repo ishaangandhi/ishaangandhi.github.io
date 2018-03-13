@@ -33,7 +33,7 @@ a {
 	}
 .name {
     margin-bottom: 0px;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', 'PT Sans', sans-serif;
     font-weight: 300
 }
 
