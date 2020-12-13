@@ -24,29 +24,29 @@ function saveOutTrip(dino, tripStatus) {
 }
 
 function distance(lat1, lon1, lat2, lon2, unit) {
-	if ((lat1 == lat2) && (lon1 == lon2)) {
-		return 0;
-	}
-	else {
-		var radlat1 = Math.PI * lat1/180;
-		var radlat2 = Math.PI * lat2/180;
-		var theta = lon1-lon2;
-		var radtheta = Math.PI * theta/180;
-		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-		if (dist > 1) {
-			dist = 1;
-		}
-		dist = Math.acos(dist);
-		dist = dist * 180/Math.PI;
-		dist = dist * 60 * 1.1515;
-		if (unit=="K") { dist = dist * 1.609344 }
-		if (unit=="N") { dist = dist * 0.8684 }
-		return dist;
-	}
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+        return 0;
+    }
+    else {
+        var radlat1 = Math.PI * lat1 / 180;
+        var radlat2 = Math.PI * lat2 / 180;
+        var theta = lon1 - lon2;
+        var radtheta = Math.PI * theta / 180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+            dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180 / Math.PI;
+        dist = dist * 60 * 1.1515;
+        if (unit == "K") { dist = dist * 1.609344 }
+        if (unit == "N") { dist = dist * 0.8684 }
+        return dist;
+    }
 }
 
 function calculateDistances(dino) {
-    return function() {
+    return function () {
         // Get the distance travelled so far, and the last coordinate
         var getOptions = {
             source: 'default'
@@ -56,7 +56,7 @@ function calculateDistances(dino) {
             tripStatus = doc.data();
             // Calculate the distance from the last coordinate to the current
             // coordinate
-            navigator.geolocation.getCurrentPosition(function(loc) {
+            navigator.geolocation.getCurrentPosition(function (loc) {
                 let prev_lat = tripStatus['last_lat'];
                 let prev_long = tripStatus['last_long'];
                 let cur_lat = loc.coords.latitude;
@@ -78,7 +78,7 @@ function calculateDistances(dino) {
                     }, { merge: true });
                 }
             });
-        });     
+        });
     }
 }
 
@@ -104,7 +104,7 @@ function onButtonClick(dino) {
             3. Set loop to update coordinate every 10 seconds
         */
         if (!tripStatus["is_active"]) {
-            navigator.geolocation.getCurrentPosition(function(loc) {
+            navigator.geolocation.getCurrentPosition(function (loc) {
                 tripRef.set({
                     total_distance: 0.0,
                     last_lat: loc.coords.latitude,
@@ -123,7 +123,7 @@ function onButtonClick(dino) {
             2. Update the table with our new status
             3. Change the text on the button
         */
-       else {
+        else {
             saveOutTrip(dino, tripStatus);
             tripRef.set({
                 is_active: false
@@ -153,4 +153,42 @@ function initializeListeners() {
     }
 }
 
-initializeListeners();
+function fillInTables() {
+    // T-Rex steps are 12-15 feet
+    let trex_steps_per_mile = 5280 / 15;
+    // Sauropod steps are 9 feet
+    let sauropod_steps_per_mile = 5280 / 9;
+
+    for (dino of ['ishaan', 'francesca']) {
+        var tripRef = db.collection("trip_histories").doc(dino);
+        let table = document.getElementById(dino + '-table');
+        tripRef.get().then(function (doc) {
+            var options = {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            histories = doc.data();
+            var sorted_times = Object.keys(histories).sort()
+            for (time of sorted_times) {
+                let dist = histories[time];
+                let date = new Date(Number(time));
+                let date_str = date.toLocaleDateString("en-US", options);
+                let row = table.insertRow(1);
+                let date_cell = row.insertCell();
+                let dist_cell = row.insertCell();
+                let step_cell = row.insertCell();
+                date_cell.innerHTML = date_str;
+                dist_cell.innerHTML = dist.toFixed(2) + " mi";
+                step_cell.innerHTML = (
+                    dino === "ishaan" ? 
+                    dist * trex_steps_per_mile : 
+                    dist * sauropod_steps_per_mile
+                    ).toFixed(0);
+            }
+        });
+    }
+}

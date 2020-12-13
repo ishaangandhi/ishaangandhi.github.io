@@ -26,31 +26,39 @@
 
 </head>
 
-<body onload="javascript:initializeListeners()">
-    <div class="text-center mb-4 main">
-        <div class="half-containers">
+<body onload="javascript:fillInTables()">
+    <div class="text-center mb-4 main-holder">
+        <div class="table-container">
             <img class="mb-4" src="img/green.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Ishaan</h1>
-            <h1 class="h3 mb-3 font-weight-bold" id="ishaan-dist">
-                0.00 mi
-            </h1>
-            <button class="btn btn-lg btn-primary btn-block" id="ishaan-btn"
-                onclick="onButtonClick('ishaan')">Start</button>
+            <table class="table" id="ishaan-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Distance</th>
+                    <th scope="col">T-Rex Steps</th>
+                  </tr>
+                </thead>
+            </table>              
         </div>
         <br>
-        <div class="half-containers">
+        <div class="table-container">
             <img class="mb-4" src="img/blue.webp" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Francesca</h1>
-            <h1 class="h3 mb-3 font-weight-bold" id="francesca-dist">
-                0.00 mi
-            </h1>
-            <button class="btn btn-lg btn-primary btn-block" id="francesca-btn"
-                onclick="onButtonClick('francesca')">Start</button>
+            <table class="table" id="francesca-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Distance</th>
+                    <th scope="col">Sauropod Steps</th>
+                  </tr>
+                </thead>
+            </table>
         </div>
     </div>
     <button class="btn btn-sml btn-secondary btn-block fixedbutton"
-        onclick="location.href='past_trips.html';"
-    > View Past Runs 🏃‍♀️ 🏃‍♂️ </button>
+    onclick="location.href='index.html';"> 👈 </button>
+
 </body>
 
 </html>
