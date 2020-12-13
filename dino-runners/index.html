@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.ico">
+
+    <title>DinoRunners</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="floating-labels.css" rel="stylesheet">
+    
+    <!-- Firebase stuff -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    
+    <!-- Main script -->
+    <script src="script.js"></script>
+
+</head>
+
+<body>
+    <div class="text-center mb-4 main">
+        <div class="half-containers">
+            <img class="mb-4" src="img/green.png" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Ishaan</h1>
+            <h1 class="h3 mb-3 font-weight-bold" id="ishaan-dist">
+                    0.00 mi
+            </h1>
+            <button class="btn btn-lg btn-primary btn-block" id="ishaan-btn" onclick="onButtonClick('ishaan')">Start</button>
+        </div>
+        <br>
+        <div class="half-containers">
+            <img class="mb-4" src="img/blue.webp" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Francesca</h1>
+            <h1 class="h3 mb-3 font-weight-bold" id="francesca-dist">
+                    0.00 mi
+            </h1>
+            <button class="btn btn-lg btn-primary btn-block" id="francesca-btn" onclick="onButtonClick('francesca')">Start</button>
+        </div>
+    </div>
+</body>
+
+</html>
