@@ -138,7 +138,6 @@ function onButtonClick(dino) {
 function updateDinoDistance(dino) {
     return function (doc) {
         tripStatus = doc.data();
-        console.log(tripStatus);
         document.getElementById(dino + "-dist").innerHTML = tripStatus["total_distance"].toFixed(2) + " mi";
         document.getElementById(dino + "-btn").innerHTML = tripStatus["is_active"] ? STOP_BUTTON_TEXT : START_BUTTON_TEXT;
     }
@@ -147,7 +146,6 @@ function updateDinoDistance(dino) {
 function initializeListeners() {
     // Add listener for the dino's distances
     for (dino of ["ishaan", "francesca"]) {
-        console.log(dino);
         db.collection("current_trip").doc(dino)
             .onSnapshot(updateDinoDistance(dino));
     }
@@ -156,9 +154,9 @@ function initializeListeners() {
 function deleteRow(dino, time) {
     db.collection("trip_histories").doc(dino).update({
         [time]: firebase.firestore.FieldValue.delete()
-    });    
-    console.log("deleting time: " + time + " " + dino)
-    location.reload();
+    }).then(function(error) {
+        location.reload();
+    });
 }
 
 function fillInTables() {
