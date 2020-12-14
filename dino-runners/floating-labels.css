@@ -108,11 +108,18 @@ table {
   table-layout:fixed;
 }
 
-#table-container {
-  display: table
+.table-container {
+  width: calc(100% - 30px);
 }
 
 .main-holder {
   overflow: auto;
   padding-bottom: 20px;
+}
+
+span.killer {
+  float: right;
+  margin-right: -35px;
+  color: red;
+  font-weight: bold;
 }

@@ -153,13 +153,21 @@ function initializeListeners() {
     }
 }
 
+function deleteRow(dino, time) {
+    db.collection("trip_histories").doc(dino).update({
+        [time]: firebase.firestore.FieldValue.delete()
+    });    
+    console.log("deleting time: " + time + " " + dino)
+    location.reload();
+}
+
 function fillInTables() {
     // T-Rex steps are 12-15 feet
     let trex_steps_per_mile = 5280 / 15;
     // Sauropod steps are 9 feet
     let sauropod_steps_per_mile = 5280 / 9;
 
-    for (dino of ['ishaan', 'francesca']) {
+    for (let dino of ['ishaan', 'francesca']) {
         var tripRef = db.collection("trip_histories").doc(dino);
         let table = document.getElementById(dino + '-table');
         tripRef.get().then(function (doc) {
@@ -168,7 +176,7 @@ function fillInTables() {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
-                hour: '2-digit',
+                hour: 'numeric',
                 minute: '2-digit'
             };
             histories = doc.data();
@@ -187,7 +195,7 @@ function fillInTables() {
                     dino === "ishaan" ? 
                     dist * trex_steps_per_mile : 
                     dist * sauropod_steps_per_mile
-                    ).toFixed(0);
+                    ).toFixed(0) + `<span class="killer"><a href="javascript:deleteRow('${dino}', ${time})">🗑</a></span>`;
             }
         });
     }
