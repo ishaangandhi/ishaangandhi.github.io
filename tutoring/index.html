@@ -1,41 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expert Tutors - Empowering Education</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Expert Tutors</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="about">
-        <h2>About Us</h2>
-        <p>Welcome to Expert Tutors, where we believe in empowering students through personalized education. Our team of professional tutors is dedicated to providing high-quality, one-on-one tutoring services to help learners of all ages achieve their academic goals.</p>
-    </section>
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>We offer a wide range of tutoring services in subjects including mathematics, science, language arts, and more. Whether you're preparing for a standardized test or need help with homework, our tutors are here to support you every step of the way.</p>
-    </section>
-    <section id="testimonials">
-        <h2>Testimonials</h2>
-        <p>Don't just take our word for it - hear what our satisfied students and parents have to say about their experiences with Expert Tutors.</p>
-    </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you're interested in learning more about our services or would like to schedule a tutoring session, please get in touch with us. We're here to answer any questions you may have.</p>
-    </section>
-    <footer>
-        <p>&copy; 2023 Expert Tutors. All rights reserved.</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="p-10 text-slate-800 bg-slate-50 max-w-[800px] mx-auto">
+    <div class="flex justify-center mb-2">
+      <div class="p-4 rounded-lg flex flex-col justify-center items-center">
+        <div class="text-2xl sm:text-4xl mb-2 font-medium">
+          Ishaan Gandhi Tutoring
+        </div>
+        <div class="text-xl flex flex-row flex-wrap">
+          <div>SAT</div>
+          <div class="mx-2">·</div>
+          <div>ACT</div>
+          <div class="mx-2">·</div>
+          <div>Physics</div>
+          <div class="mx-2">·</div>
+          <div>Math</div>
+          <div class="mx-2">·</div>
+          <div>CS</div>
+        </div>
+        <div class="text-sm text-slate-500 italic my-2">
+          Last update: May 1, 2024
+        </div>
+      </div>
+      <div class="flex justify-center mx-4 hidden sm:block">
+        <img class="rounded-xl" width="140" src="./portrait.JPG" />
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <div
+        class="mb-4 p-4 border border-blue-500 rounded-lg bg-white"
+      >
+        <p class="text-center">
+          I offer one-on-one in-person tutoring in Midtown and the Upper East
+          Side. I also do tutoring via Google Hangouts and an iPad.
+        </p>
+        <div class="flex justify-center">
+          <a
+            class="px-4 py-2 bg-blue-500 text-white font-medium mt-4 text-sm rounded-full hover:bg-blue-600"
+            href="https://cal.com/ishaangandhi/30min"
+            >Book free consultation</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="my-4">
+      <div class="text-lg font-medium">About</div>
+      <div class="flex flex-col">
+        <div>
+          <p class="my-2">
+            My name is Ishaan Gandhi, and I am an independent Manhattan-based
+            tutor with 5 years of tutoring experience.
+          </p>
+          <p class="my-2">
+            My philosophy is that one-on-one tutoring is the fastest way to
+            master any topic. With the right tutor, every student has the
+            potential to excel.
+          </p>
+        </div>
+        <div class="flex justify-center mx-4 sm:hidden">
+          <img class="rounded-xl" width="200" src="./portrait.JPG" />
+        </div>
+      </div>
+    </div>
+    <div class="my-4">
+      <div class="text-lg font-medium">Qualifications</div>
+      <p class="my-2">
+        I am a graduate of Thomas Jefferson High School for Science and
+        Technology, where I was “peer tutor of the year”.
+      </p>
+
+      <ul class="list-disc ml-4">
+        <li>I earned a 36 on my ACT and every subsection (99.9 percentile)</li>
+        <li>I earned an 800 on every SAT II subject test I took</li>
+      </ul>
+
+      <p class="my-2">
+        I went on to earn a B.S. in Mathematics & Computer Science form Harvey
+        Mudd College, where I was a TA.
+      </p>
+      <p class="my-2">Referrals are available upon request.</p>
+    </div>
+    <div class="my-4">
+      <div class="text-lg font-medium">Pricing</div>
+      You can book me per hour, or any part of an hour (pro-rated.)
+      <table class="w-full my-2 max-w-[400px]">
+        <tr>
+          <td>SAT/ACT:</td>
+          <td class="font-semibold">$250/hour</td>
+        </tr>
+        <tr>
+          <td>Math</td>
+          <td class="font-semibold">$175/hour</td>
+        </tr>
+        <tr>
+          <td>Physics</td>
+          <td class="font-semibold">$175/hour</td>
+        </tr>
+        <tr>
+          <td>Computer Science</td>
+          <td class="font-semibold">$175/hour</td>
+        </tr>
+      </table>
+    </div>
+    <div class="my-4">
+      <div class="text-lg font-medium">Recommended tutoring</div>
+      <p class="my-2">
+        I have found 1 hour of tutoring per week to be sufficient for most
+        students to see marked improvements.
+      </p>
+
+      <p class="my-2">
+        For the ambitious student, I recommend 2 sessions per week of 45 minutes
+        each.
+      </p>
+    </div>
+    <div class="my-4">
+      <div class="text-lg font-medium">Guarantee</div>
+      If you don’t feel you got your money’s worth after the first session, just
+      let me know, and you’ll get 100% of your money back. Its that simple.
+    </div>
+    <div class="flex justify-center">
+      <a
+        class="px-4 py-2 bg-blue-500 text-white font-medium mt-4 text-sm rounded-full hover:bg-blue-600"
+        href="https://cal.com/ishaangandhi/30min"
+        >Book free consultation</a
+      >
+    </div>
+  </body>
 </html>
